@@ -60,7 +60,8 @@ class ServerSentEvent implements Stringable
     public function __invoke()
     {
         echo $this;
-        ob_flush();
+        if (ob_get_level() > 0)
+            ob_flush();
         flush();
     }
 
